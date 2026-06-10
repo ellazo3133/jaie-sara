@@ -555,9 +555,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   var allMitzvot = [];
   var allContenidos = [];
 
-// ── LOAD COUNTER ──
-  async function loadCounter() {
-    // Mostrar valor guardado localmente mientras carga
+async function loadCounter() {
     var cached = parseInt(localStorage.getItem('js_count_cached') || '0');
     if (cached > 0) {
       document.getElementById('cDisplay').textContent = cached;
@@ -571,6 +569,17 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
         animCount();
       }
     } catch(e) { console.log('Counter error', e); }
+  }
+
+  function animCount() {
+    var el = document.getElementById('cDisplay');
+    var cur = parseInt(el.textContent) || 0;
+    if (cur >= totalCount) { el.textContent = totalCount; return; }
+    var timer = setInterval(function() {
+      cur = Math.min(cur + Math.ceil((totalCount - cur) / 8) + 1, totalCount);
+      el.textContent = cur;
+      if (cur >= totalCount) clearInterval(timer);
+    }, 40);
   }
   // ── LOAD MITZVOT ──
   async function loadMitzvot() {
