@@ -275,7 +275,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   <button class="hero-btn" onclick="openPopup()">Sumá una Mitzvá en su mérito</button>
   <div class="hero-rule"></div>
   <p class="hero-sub"><strong>Sumate a una cadena de Mitzvot en memoria de Sara bat Abe Z"L</strong></p>
-  <p class="hero-dates">"Durante 91 años Sara dedicó su vida a su familia, a la Torá y a hacer sentir bien a cada persona. Hoy queremos agradecer todo ese bien multiplicándolo.</p>
+  <p class="hero-sub">Durante 91 años Sara dedicó su vida a la comunidad, a la Torá y a hacer sentir bien a cada persona. Hoy queremos agradecer todo ese bien multiplicándolo.</p>
   <div class="hero-rule"></div>
   <p class="hero-action">Nuestra familia tiene la misión de aumentar la luz y buenas acciones en mérito de ella. Acompáñanos en esta misión.
 </header>
@@ -479,7 +479,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
     </div>
   </div>
   <div class="thanks-popup" id="popupThanks" style="display:none">
-    <div class="thanks-top"><div class="thanks-top-title">¡Todá rabá!</div></div>
+    <div class="thanks-top"><div class="thanks-top-title">¡Muchas gracias!</div></div>
     <p class="thanks-name" id="tName"></p>
     <div class="thanks-mitzva" id="tMitzva"></div>
     <p class="thanks-p">Gracias! Tu compromiso quedó registrado y se suma al mérito de <strong>Sara bat Abe Z"L</strong>. Que esta acción sea una elevación para su alma.</p>
@@ -692,7 +692,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   function showThanks(nombre, mitzvaStr) {
     document.getElementById('tName').textContent = nombre;
     document.getElementById('tMitzva').textContent = mitzvaStr;
-    var msg = encodeURIComponent('Me comprometí a realizar: "' + mitzvaStr + '" en mérito de Sara bat Abe Z"L.\n\nEl Talmud dice: los justos son llamados "vivos" incluso después de su muerte.\n\n¿Vos también querés tomar un compromiso?\n👉 jaiesara.netlify.app');
+    var msg = encodeURIComponent('Me sumo a la campaña de Mitzvot y me comprometí a realizar: "' + mitzvaStr + '" en mérito de *Sara bat Abe Z"L*.\n\nEl Talmud dice: _los justos son llamados "vivos" incluso después de su fallecimiento_.\n\n¿Podés sumarte con un compromiso?\n👉 https://jaiesara.com \n\n*Cada compromiso suma. Una acción pequeña ilumina mucho.*');
     document.getElementById('waBtn').href = 'https://wa.me/?text=' + msg;
     document.getElementById('popupComp').style.display = 'none';
     document.getElementById('popupThanks').style.display = '';
