@@ -558,7 +558,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
 // ── LOAD COUNTER ──
 async function loadCounter() {
     // Mostrar 0 animado mientras carga
-    document.getElementById('cDisplay').textContent = '...';
+    document.getElementById('cDisplay').textContent = '0';
     try {
       var res = await sb.from('compromisos').select('cantidad_mitzvas');
       if (res.data) {
