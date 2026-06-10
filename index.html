@@ -11,7 +11,7 @@
 <!-- SEO -->
 <meta name="description" content="Tomá un compromiso en su mérito. Estudio y la acción en su memoria."Los justos son llamados 'vivos' incluso después de su fallecimiento. Su influencia sigue actuando en el mundo a través de quienes los continuamos.">
 <meta name="keywords" content="Tomá un compromiso en su mérito. Estudio y la acción en su memoria."Los justos son llamados 'vivos' incluso después de su fallecimiento. Su influencia sigue actuando en el mundo a través de quienes los continuamos.">
-<meta name="author" content="Jaie Sara — Leilui Nishmat Sara bat Abe Z"L">
+<meta name="author" content="Jaié Sara — Leilui Nishmat Sara bat Abe Z"L">
 <meta name="robots" content="index,follow">
 <meta name="googlebot" content="index,follow">
 <link rel="canonical" href="https://jaie-sara.netlify.app/">
@@ -19,8 +19,8 @@
 <!-- OPEN GRAPH (WhatsApp, Facebook, LinkedIn) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jaie-sara.netlify.app/">
-<meta property="og:site_name" content="Jaie Sara — Leilui Nishmat Sara bat Abe Z"L">
-<meta property="og:title" content="Jaie Sara — Leilui Nishmat Sara bat Abe Z"L">
+<meta property="og:site_name" content="Jaié Sara — Leilui Nishmat Sara bat Abe Z"L">
+<meta property="og:title" content="Jaié Sara — Leilui Nishmat Sara bat Abe Z"L">
 <meta property="og:description" content="Tomá un compromiso en su mérito. Estudio y la acción en su memoria. "Los justos son llamados 'vivos' incluso después de su fallecimiento. Su influencia sigue actuando en el mundo a través de quienes los continuamos.">
 <meta property="og:image" content="https://jaie-sara.netlify.app/og-image.jpg">
 
@@ -33,7 +33,7 @@
 <!-- COLOR DEL NAVEGADOR EN MÓVILES -->
 <meta name="theme-color" content="#AB8000">
 
-<title>Jaie Sara — Leilui Nishmat Sara bat Abe Z"L</title>
+<title>Jaié Sara — Leilui Nishmat Sara bat Abe Z"L</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -555,26 +555,15 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   var allMitzvot = [];
   var allContenidos = [];
 
-  // ── LOAD COUNTER ──
+ // ── LOAD COUNTER ──
   async function loadCounter() {
     try {
-      var res = await sb.from('mitzvot').select('*').eq('activa', true).eq('idioma', 'es').order('orden');
+      var res = await sb.from('compromisos').select('cantidad_mitzvas');
       if (res.data) {
         totalCount = res.data.reduce(function(s, r) { return s + (r.cantidad_mitzvas || 1); }, 0);
         animCount();
       }
     } catch(e) { console.log('Counter error', e); }
-  }
-
-  function animCount() {
-    var el = document.getElementById('cDisplay');
-    var cur = 0;
-    var timer = setInterval(function() {
-      cur = Math.min(cur + Math.ceil((totalCount - cur) / 8) + 1, totalCount);
-      el.textContent = cur;
-      if (cur >= totalCount) clearInterval(timer);
-    }, 40);
-    if (totalCount === 0) el.textContent = 0;
   }
 
   // ── LOAD MITZVOT ──
