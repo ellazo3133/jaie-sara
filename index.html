@@ -554,18 +554,15 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   var currentAdminTab = 'mitzvot';
   var allMitzvot = [];
   var allContenidos = [];
-
+  
+// ── LOAD COUNTER ──
 async function loadCounter() {
-    var cached = parseInt(localStorage.getItem('js_count_cached') || '0');
-    if (cached > 0) {
-      document.getElementById('cDisplay').textContent = cached;
-      totalCount = cached;
-    }
+    // Mostrar 0 animado mientras carga
+    document.getElementById('cDisplay').textContent = '...';
     try {
       var res = await sb.from('compromisos').select('cantidad_mitzvas');
       if (res.data) {
         totalCount = res.data.reduce(function(s, r) { return s + (r.cantidad_mitzvas || 1); }, 0);
-        localStorage.setItem('js_count_cached', totalCount);
         animCount();
       }
     } catch(e) { console.log('Counter error', e); }
@@ -573,8 +570,7 @@ async function loadCounter() {
 
   function animCount() {
     var el = document.getElementById('cDisplay');
-    var cur = parseInt(el.textContent) || 0;
-    if (cur >= totalCount) { el.textContent = totalCount; return; }
+    var cur = 0;
     var timer = setInterval(function() {
       cur = Math.min(cur + Math.ceil((totalCount - cur) / 8) + 1, totalCount);
       el.textContent = cur;
