@@ -584,7 +584,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   // ── LOAD MITZVOT ──
   async function loadMitzvot() {
     try {
-      var res = await sb.from('mitzvot').select('*').eq('activa', true).order('orden');
+      var res = await sb.from('mitzvot').select('*').eq('activa', true).eq('idioma', 'es').order('orden');
       if (res.data && res.data.length > 0) {
         allMitzvot = res.data;
         renderMitzvaGrid('inlineMitzvaGrid', inlineSelected, true);
