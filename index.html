@@ -555,17 +555,23 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   var allMitzvot = [];
   var allContenidos = [];
 
- // ── LOAD COUNTER ──
+// ── LOAD COUNTER ──
   async function loadCounter() {
+    // Mostrar valor guardado localmente mientras carga
+    var cached = parseInt(localStorage.getItem('js_count_cached') || '0');
+    if (cached > 0) {
+      document.getElementById('cDisplay').textContent = cached;
+      totalCount = cached;
+    }
     try {
       var res = await sb.from('compromisos').select('cantidad_mitzvas');
       if (res.data) {
         totalCount = res.data.reduce(function(s, r) { return s + (r.cantidad_mitzvas || 1); }, 0);
+        localStorage.setItem('js_count_cached', totalCount);
         animCount();
       }
     } catch(e) { console.log('Counter error', e); }
   }
-
   // ── LOAD MITZVOT ──
   async function loadMitzvot() {
     try {
