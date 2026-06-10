@@ -562,7 +562,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
   // ── LOAD COUNTER ──
   async function loadCounter() {
     try {
-      var res = await sb.from('compromisos').select('cantidad_mitzvas');
+      var res = await sb.from('mitzvot').select('*').eq('activa', true).eq('idioma', 'es').order('orden');
       if (res.data) {
         totalCount = res.data.reduce(function(s, r) { return s + (r.cantidad_mitzvas || 1); }, 0);
         animCount();
@@ -683,7 +683,8 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
 
     var res = await sb.from('compromisos').insert({
       nombre: nombre, apellido: apellido, email: email,
-      mitzvas: mitzvaStr, cantidad_mitzvas: totalMitzvas
+      mitzvas: mitzvaStr, cantidad_mitzvas: totalMitzvas,
+      idioma: 'es'
     });
     if (res.error) throw res.error;
 
